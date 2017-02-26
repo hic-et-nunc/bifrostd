@@ -1,0 +1,33 @@
+{
+  "name": "bifrostd",
+  "version": "1.0.0",
+  "description": "Bring files elsewhere",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wdalmut/bifrostd.git"
+  },
+  "author": "walter.dalmut@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wdalmut/bifrostd/issues"
+  },
+  "homepage": "https://github.com/wdalmut/bifrostd#readme",
+  "devDependencies": {
+    "fs-mock": "^1.2.1",
+    "jasmine": "^2.5.3",
+    "mock-fs": "^4.1.0"
+  },
+  "dependencies": {
+    "file-attributes": "^1.0.3",
+    "joi": "^10.2.2",
+    "mkdirp": "^0.5.1",
+    "nodegit": "^0.18.0",
+    "q": "^1.4.1",
+    "rimraf": "^2.6.1",
+    "uuid": "^3.0.1"
+  }
+}
