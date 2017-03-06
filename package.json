@@ -4,6 +4,7 @@
   "description": "Bring files elsewhere",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "./node_modules/.bin/jasmine"
   },
   "repository": {
@@ -24,6 +25,7 @@
   "dependencies": {
     "file-attributes": "^1.0.3",
     "joi": "^10.2.2",
+    "ls-stat": "^1.0.0",
     "mkdirp": "^0.5.1",
     "nodegit": "^0.18.0",
     "q": "^1.4.1",
