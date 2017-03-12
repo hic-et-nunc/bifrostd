@@ -1,5 +1,6 @@
 
-const http = require('./http')(require('./conf.json'));
+const conf = require('./conf.json');
+const http = require('./http')(conf);
 
 http.listen({
   path: "/tmp/bifrostd.sock",
