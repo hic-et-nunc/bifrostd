@@ -1,6 +1,4 @@
 const joi = require('joi');
-const node = require('../../node');
-const copy = require('../../copy');
 
 module.exports = function(events) {
   var schema = joi.object().keys({
