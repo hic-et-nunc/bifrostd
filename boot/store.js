@@ -6,7 +6,7 @@ const error = writer(level.error);
 
 module.exports = function(app) {
   const watch = require('../watch')(app.events);
-  const db = require('../store')(app.datadir);
+  const db = app.db = require('../store')(app.datadir);
 
   db.read().then((data) => {
     Object.keys(data).map((key) => {
