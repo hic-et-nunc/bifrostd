@@ -1,20 +1,17 @@
 const http = require('http');
 const rest = require('./rest');
 
-module.exports = function(conf) {
-  conf.watches = [];
-
+module.exports = function(app) {
   var server = http.createServer(rest([
-    ["post", /^\/watch$/i, require('./rest/watch')(conf)],
-    ["get", /^\/namespace$/i, require('./rest/namespace')(conf)],
+    ["post", /^\/watch$/i, require('./rest/watch')(app.events)],
+    ["get", /^\/namespace$/i, require('./rest/namespace')(app.workdir)],
   ]));
 
   return {
-    listen: function(conf, cb) {
-      server.listen(conf, cb);
+    listen: function(app, cb) {
+      server.listen(app, cb);
     },
     close: function() {
-      conf.watches.map((watch) => watch.close());
       server.close();
     },
   };

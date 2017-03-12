@@ -1,14 +1,15 @@
+const path = require('path');
+const EventEmitter = require('events');
 
-const conf = require('./conf.json');
-const http = require('./http')(conf);
+const events = new EventEmitter();
 
-http.listen({
-  path: "/tmp/bifrostd.sock",
-}, () => {
-  process.stdout.write("Listening...\n");
-});
+require('./boot')
+  .run([path.join(__dirname, './conf.json')], events)
+  .then(require('./boot/events'))
+  .then(require('./boot/http'))
+  .then(require('./boot/end'));
 
 process.on("SIGINT", function() {
-  process.stdout.write("Close signal received...\n");
-  http.close();
+  events.emit('shutdown', 'shutdown');
 });
+

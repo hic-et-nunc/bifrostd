@@ -2,7 +2,7 @@ const joi = require('joi');
 const node = require('../../node');
 const copy = require('../../copy');
 
-module.exports = function(conf) {
+module.exports = function(events) {
   var schema = joi.object().keys({
     namespace: joi.string().min(1).required(),
     path: joi.string().min(1).required(),
@@ -16,7 +16,7 @@ module.exports = function(conf) {
       return reply({errors: result.error.details}, 406);
     }
 
-    conf.watches.push(node(payload.namespace)(payload.path, copy(conf.workdir)));
+    events.emit("watch", payload);
 
     reply({}, 202);
   };
