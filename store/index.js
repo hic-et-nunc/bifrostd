@@ -31,7 +31,7 @@ module.exports = function(path) {
         }
 
         if (!data) {
-          data = [];
+          data = null;
         }
 
         return d.resolve(data[key]);

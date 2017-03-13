@@ -8,8 +8,11 @@ require('./boot')
   .then(require('./boot/events'))
   .then(require('./boot/watch'))
   .then(require('./boot/store'))
+  .then(require('./boot/queue'))
+  .then(require('./boot/uploader'))
   .then(require('./boot/http'))
   .then(require('./boot/end'))
+  .fail((err) => process.exit(1))
 ;
 
 process.on("SIGINT", function() {

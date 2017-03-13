@@ -35,6 +35,8 @@ module.exports = function(app) {
       .fail(error);
   });
 
+  app.db = db;
+
   return q(app);
 };
 

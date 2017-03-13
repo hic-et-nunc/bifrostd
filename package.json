@@ -25,10 +25,11 @@
   },
   "dependencies": {
     "joi": "^10.2.2",
-    "ls-stat": "^1.0.0",
+    "ls-stat": "^1.0.1",
     "mkdirp": "^0.5.1",
     "nodegit": "^0.18.0",
     "q": "^1.4.1",
+    "queue-file": "0.0.1",
     "rimraf": "^2.6.1",
     "toiletdb": "^1.2.1",
     "uuid": "^3.0.1"

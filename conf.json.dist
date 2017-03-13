@@ -1,0 +1,16 @@
+{
+    "datadir" :"/tmp/data.json",
+    "workdir": "/tmp/bifrostd",
+    "queuedir": "/tmp/queue",
+    "aws": {
+        "conf": {
+            "region": "eu-west-1",
+            "credentials": {
+                "accessKeyId": "",
+                "secretAccessKey": ""
+            },
+            "apiVersion": "2006-03-01"
+        },
+        "bucketName": "bifrost.yourname.com"
+    }
+}
