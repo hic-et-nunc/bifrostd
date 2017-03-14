@@ -17,6 +17,8 @@ module.exports = function(app) {
         });
       });
 
+      app.events.on('shutdown', queue.close);
+
       app.queue = queue;
 
       return resolve(app);

@@ -10,5 +10,3 @@ It watches for changes
 $ bifrost watch --path ~/keys --namespace personal
 ```
 
-node(namespace)(basepath, copy("/var/lib/bifrostd"));
-
