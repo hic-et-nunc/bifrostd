@@ -1,10 +1,10 @@
 
 module.exports = function(s3, bucketName) {
-  return function(key, data, callback) {
+  return function(key, stream, callback) {
       s3.putObject({
         Bucket: bucketName,
         Key: key,
-        Data: data,
+        Body: stream,
       }, callback);
   };
 };
