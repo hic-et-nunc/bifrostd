@@ -7,15 +7,19 @@ module.exports = function(events) {
   }).with('namespace', 'path');
 
   return function(body, reply) {
-    var payload = JSON.parse(body.payload);
+    try {
+      var payload = JSON.parse(body.payload);
 
-    var result = joi.validate(payload, schema);
-    if (result.error !== null) {
-      return reply({errors: result.error.details}, 406);
+      var result = joi.validate(payload, schema);
+      if (result.error !== null) {
+        return reply({errors: result.error.details}, 406);
+      }
+
+      events.emit("watch", payload);
+
+      reply({}, 202);
+    } catch (e) {
+      reply({error: e.message}, 406);
     }
-
-    events.emit("watch", payload);
-
-    reply({}, 202);
   };
 };
