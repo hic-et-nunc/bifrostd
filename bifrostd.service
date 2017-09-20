@@ -1,0 +1,14 @@
+[Unit]
+Description=Bifrost daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/antenor
+ExecStart=/home/antenor/git/bifrost/d/bifrostd
+Restart=on-abort
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
