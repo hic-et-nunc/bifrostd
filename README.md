@@ -4,9 +4,24 @@ Bring things to another place...
 
 ## How it works
 
-It watches for changes
+## List watches
 
 ```sh
-$ bifrost watch --path ~/keys --namespace personal
+$ curl -iv -XGET --unix-socket /tmp/bifrostd.sock http:/path
+```
+
+## Expose Details of a watch
+
+```sh
+$ curl -iv -XGET --unix-socket /tmp/bifrostd.sock http:/path//tmp/walter
+```
+
+## Watch path
+
+```sh
+$ curl -iv \
+--data '{"path": "/tmp/walter", "namespace": "wally"}' \
+-XPOST \
+--unix-socket /tmp/bifrostd.sock http:/watch
 ```
 
