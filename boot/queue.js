@@ -1,4 +1,5 @@
 const q = require('q');
+const fs = require('fs');
 
 module.exports = function(app) {
   const {writer, level} = require('./../log/stdout');
@@ -11,9 +12,20 @@ module.exports = function(app) {
       }
 
       app.events.on('watch.change', (fullpath) => {
-        queue.push(fullpath, (err, filename) => {
-          writer(level.debug, `Queue file recorded at path ${filename}`);
-          writer(level.info, `File ${fullpath} sent to queue...`);
+
+        fs.stat(fullpath, function(err, stats) {
+          if (err) {
+            app.events.emit('error', {'error': err.message});
+          }
+
+          if (!stats.isDirectory()) {
+            queue.push(fullpath, (err, filename) => {
+              writer(level.debug, `Queue file recorded at path ${filename}`);
+              writer(level.info, `File ${fullpath} sent to queue...`);
+            });
+          } else {
+            app.events.emit('error', {'error': `Path: ${fullpath} is directory skipped...`});
+          }
         });
       });
 
