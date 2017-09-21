@@ -1,4 +1,5 @@
 const q = require('q');
+const fs = require('fs');
 const path = require('path');
 
 module.exports = function(app) {
@@ -9,11 +10,15 @@ module.exports = function(app) {
 
   return q.Promise((resolve, reject, notify) => {
 
+    let sock = path.join(app.workdir, "bifrostd.sock");
+
     http.listen({
-      path: path.join(app.workdir, "bifrostd.sock"),
+      path: sock,
     }, () => {
-      writer(level.info, "Listening...");
-      return resolve(app);
+      fs.chmod(sock, 504, () => {
+        writer(level.info, "Listening...");
+        return resolve(app);
+      });
     });
   });
 };
