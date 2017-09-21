@@ -1,4 +1,5 @@
 const q = require('q');
+const path = require('path');
 
 module.exports = function(app) {
   const {writer, level} = require('./../log/stdout');
@@ -9,7 +10,7 @@ module.exports = function(app) {
   return q.Promise((resolve, reject, notify) => {
 
     http.listen({
-      path: "/tmp/bifrostd.sock",
+      path: path.join(app.workdir, "bifrostd.sock"),
     }, () => {
       writer(level.info, "Listening...");
       return resolve(app);
