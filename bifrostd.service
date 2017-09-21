@@ -3,8 +3,8 @@ Description=Bifrost daemon
 After=network.target
 
 [Service]
-Type=simple
 User=root
+Group=bifrostd
 WorkingDirectory=/home/antenor
 ExecStart=/home/antenor/git/bifrost/d/bifrostd
 Restart=on-abort
