@@ -16,7 +16,9 @@ module.exports = function(routes) {
       var body = {
         query: urlInfo.query,
         payload: [],
-        params: route[1].exec(urlInfo.pathname).slice(1).slice(-3),
+        params: route[1]
+          .exec(urlInfo.pathname).slice(1).slice(-3)
+          .map((item) => decodeURI(item)),
       };
 
       return req
