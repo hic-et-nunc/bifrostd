@@ -7,7 +7,9 @@ User=root
 Group=bifrostd
 WorkingDirectory=/home/antenor
 ExecStart=/home/antenor/git/bifrost/d/bifrostd
-Restart=on-abort
+ExecStartPre=/bin/mkdir -p /var/run/bifrostd
+ExecStartPre=/bin/chown -R root:bifrostd /var/run/bifrostd/
+Restart=always
 KillSignal=SIGINT
 
 [Install]
