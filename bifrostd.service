@@ -5,8 +5,7 @@ After=network.target
 [Service]
 User=root
 Group=bifrostd
-WorkingDirectory=/home/antenor
-ExecStart=/home/antenor/git/bifrost/d/bifrostd
+ExecStart=/usr/bin/bifrostd --conf /etc/bifrostd/conf.json
 ExecStartPre=/bin/mkdir -p /var/run/bifrostd
 ExecStartPre=/bin/chown -R root:bifrostd /var/run/bifrostd/
 Restart=always

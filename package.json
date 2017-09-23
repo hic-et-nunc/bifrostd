@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.28.0",
+    "commander": "^2.11.0",
     "joi": "^10.2.2",
     "ls-stat": "^1.0.1",
     "mkdirp": "^0.5.1",

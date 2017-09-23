@@ -1,10 +1,16 @@
 const path = require('path');
+const program = require('commander');
 const EventEmitter = require('events');
 
 const events = new EventEmitter();
 
+program
+  .version('0.0.1')
+  .option('-c, --conf <value>', 'Configuration file', (item, memo) => memo.concat([item]), [])
+  .parse(process.argv);
+
 require('./boot')
-  .run([path.join(__dirname, './conf.json')], events)
+  .run(program.conf, events)
   .then(require('./boot/events'))
   .then(require('./boot/watch'))
   .then(require('./boot/store'))
