@@ -4,19 +4,19 @@ Bring things to another place...
 
 ## How it works
 
-## List watches
+### List watches
 
 ```sh
 $ curl -iv -XGET --unix-socket /tmp/bifrostd.sock http:/path
 ```
 
-## Expose Details of a watch
+### Expose Details of a watch
 
 ```sh
 $ curl -iv -XGET --unix-socket /tmp/bifrostd.sock http:/path//tmp/walter
 ```
 
-## Watch path
+### Watch path
 
 ```sh
 $ curl -iv \
@@ -25,3 +25,24 @@ $ curl -iv \
 --unix-socket /tmp/bifrostd.sock http:/watch
 ```
 
+## Install
+
+### `bifrostd` group
+
+```sh
+sudo groupadd -g 342 bifrostd --system
+```
+
+### Add `bifrostd` to your user
+
+```sh
+sudo usermod -a -G bifrostd {username}
+```
+
+### Install service
+
+Modify `bifrostd.service` in order to match your local install
+
+```sh
+sudo systemctl enable bifrostd.service
+```
