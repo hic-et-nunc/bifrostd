@@ -15,8 +15,8 @@ module.exports = function(events) {
         return reply({errors: result.error.details}, 406);
       }
 
-      if (payload.slice(-1) === "/") {
-        payload = payload.slice(0, -1);
+      if (payload.path.slice(-1) === "/") {
+        payload.path = payload.path.slice(0, -1);
       }
 
       events.emit("watch", payload);
