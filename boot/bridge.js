@@ -6,7 +6,7 @@ module.exports = function(app) {
 
   const adapter = require('./../bridge/s3')(new AWS.S3(app.aws.conf), app.aws.bucketName);
 
-  const bridge = require('./../bridge')(adapter, app.db);
+  const bridge = require('./../bridge')(adapter, app.db, app.events);
 
   app.queue.pop(bridge.upload);
 

@@ -4,6 +4,7 @@ module.exports = function(events) {
   var schema = joi.object().keys({
     namespace: joi.string().min(1).required(),
     path: joi.string().min(1).required(),
+    notify: joi.boolean().allow(null).optional(),
   }).with('namespace', 'path');
 
   return function(body, reply) {

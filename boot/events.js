@@ -11,6 +11,9 @@ module.exports = function(app) {
   app.events.on('watch.create', writer(level.debug));
   app.events.on('watch.close', writer(level.debug));
 
+  app.events.on('bridge.sent', writer(level.info));
+  app.events.on('bridge.fail', writer(level.error));
+
   return q(app);
 };
 

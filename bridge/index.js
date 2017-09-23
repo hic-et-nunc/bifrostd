@@ -2,11 +2,10 @@ const q = require('q');
 const fs = require('fs');
 const path = require('path');
 
-module.exports = function (upload, db) {
-  const {writer, level} = require('./../log/stdout');
-
+module.exports = function (upload, db, events) {
   return {
     upload: function(filename, next, commit, rollback) {
+      let configuration = null;
       let basename = path.basename(filename);
 
       db.get(filename).then((content) => {
@@ -20,13 +19,14 @@ module.exports = function (upload, db) {
           return q.reject(null);
         }
 
+        configuration = content;
+
         return q.nfcall(upload, path.join(content.namespace, basename), fs.createReadStream(filename));
       }).then((result) => {
-        writer(level.info, "Content " + filename + " correctly sent to the adapter");
+        events.emit("bridge.sent", {filename: filename, configuration: configuration});
         commit(next);
       }).fail((err) => {
-        writer(level.error, err);
-        writer(level.error, "Unable to write that content on the adapter");
+        events.emit("bridge.fail", err);
         rollback(next);
       });
     },
