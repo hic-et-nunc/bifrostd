@@ -21,7 +21,7 @@ module.exports = function(events) {
 
       events.emit("watch", payload);
 
-      reply({}, 202);
+      reply(payload, 202);
     } catch (e) {
       reply({error: e.message}, 406);
     }
