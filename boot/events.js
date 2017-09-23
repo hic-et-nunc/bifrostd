@@ -9,7 +9,7 @@ module.exports = function(app) {
   app.events.on('watch.remove', writer(level.debug));
 
   app.events.on('watch.create', writer(level.debug));
-  app.events.on('watch.delete', writer(level.debug));
+  app.events.on('watch.close', writer(level.debug));
 
   return q(app);
 };
