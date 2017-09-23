@@ -1,7 +1,9 @@
 {
     "datadir" :"/tmp/data.json",
-    "workdir": "/tmp/bifrostd",
     "queuedir": "/tmp/queue",
+    "httpd": {
+        "path": "/tmp/bifrostd.sock"
+    },
     "aws": {
         "conf": {
             "region": "eu-west-1",

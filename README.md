@@ -46,3 +46,23 @@ Modify `bifrostd.service` in order to match your local install
 ```sh
 sudo systemctl enable bifrostd.service
 ```
+
+## Configuration
+
+### Use `host:port`
+
+Change the `httpd` section
+
+```js
+{
+    "httpd": {
+        "host": "0.0.0.0",
+        "port:" "8081"
+    }
+}
+```
+
+```sh
+curl -iv -XGET http://localhost:8081/path
+```
+
