@@ -21,7 +21,7 @@
     "fs-mock": "^1.2.1",
     "jasmine": "^2.5.3",
     "memory-streams": "^0.1.1",
-    "mock-fs": "^4.1.0"
+    "mock-fs": "^4.4.1"
   },
   "dependencies": {
     "aws-sdk": "^2.28.0",
